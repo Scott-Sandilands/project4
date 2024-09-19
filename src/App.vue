@@ -2,12 +2,28 @@
   import GradeInput from './components/GradeInput.vue'
   import GradeList from './components/GradeList.vue'
   import GradeAverage from './components/GradeAverage.vue'
+  
+  import {ref} from 'vue'
+
+  const grades = ref([]);
+
+  const addGrade = (gradeData) => {
+    if (!isNaN(gradeData.amount)) {
+      gradeData.value.push(gradeData.amount);
+    }
+  };
+
+  const deleteGrade = (index) => {
+    grades.value.splice(index,1);
+  };
+
+
 </script>
 
 <template>
   <div>
     <h1>Grade Manager</h1>
-    <GradeInput></GradeInput>
+    <GradeInput @gradeSubmitted="addGrade"></GradeInput>
     <GradeList></GradeList>
     <GradeAverage></GradeAverage>
   </div>
