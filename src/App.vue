@@ -24,7 +24,7 @@
   <div>
     <h1>Grade Manager</h1>
     <GradeInput @gradeSubmitted="addGrade"></GradeInput>
-    <GradeList></GradeList>
+    <GradeList :grades="grades" @deleteGrade="deleteGrade" />
     <GradeAverage></GradeAverage>
   </div>
 </template>
