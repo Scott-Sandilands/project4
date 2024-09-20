@@ -1,7 +1,7 @@
 <script setup>
     import {ref, defineEmits} from 'vue';
 
-    const Grade = ref('');
+    const grade = ref('');
 
     const emit = defineEmits([ 'gradeSubmitted' ]);
 
@@ -10,7 +10,9 @@
             amount: parseFloat(grade.value),
         };
 
-        emit('gradeSubmitted', gradeData);
+        if (!isNaN(gradeData.amount)) {
+            emit('gradeSubmitted', gradeData);
+        }
 
         grade.value = '';
     };
